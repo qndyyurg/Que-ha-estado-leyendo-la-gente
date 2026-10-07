@@ -1,3 +1,18 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Busca y oculta todas las entradas de código de Colab / Jupyter
+    document.querySelectorAll('.cell-input, .input, .jp-InputArea, .collapsible-code').forEach(el => el.style.display = 'none');
+    
+    // Oculta los bloques pre que contengan código Python
+    document.querySelectorAll('pre').forEach(el => {
+      if (el.innerText.includes('import ') || el.innerText.includes('pd.read') || el.innerText.includes('plt.')) {
+        if (el.closest('.cell') || el.parentElement) {
+          el.style.display = 'none';
+        }
+      }
+    });
+  });
+</script>
 <!DOCTYPE html>
 
 <html lang="en">
